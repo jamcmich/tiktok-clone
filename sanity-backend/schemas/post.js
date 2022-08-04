@@ -48,11 +48,5 @@ export default {
 			title: 'Topic',
 			type: 'string',
 		},
-		{
-			name: 'tags',
-			title: 'Tags',
-			type: 'array',
-			of: [{ type: 'tag' }],
-		},
 	],
 };
