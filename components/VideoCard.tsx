@@ -77,7 +77,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					onMouseEnter={() => setIsHover(true)}
 					onMouseLeave={() => setIsHover(false)}
 				>
-					<Link href='/'>
+					<Link href={`/detail/${post._id}`}>
 						<video
 							className='lg:w-[600px] lg:h-[530px] w-[200px] h-[300px] rounded-2xl cursor-pointer bg-gray-100'
 							src={post.video.asset.url}
@@ -87,7 +87,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					</Link>
 
 					{isHover && (
-						<div className='absolute bottom-6 cursor-pointer left-8 md:left-11 lg:left-0 flex gap-10 justify-between w-[100px] m:w-[50px] p-3'>
+						<div className='absolute bottom-0 cursor-pointer left-8 md:left-11 lg:left-0 flex gap-10 justify-between w-[100px] m:w-[50px] p-3'>
 							{isPlaying ? (
 								<button onClick={handleVideoControlsClick}>
 									<BsFillPauseFill className='text-black text-2xl lg:text-4xl' />
