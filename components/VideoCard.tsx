@@ -34,12 +34,18 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 		}
 	};
 
+	useEffect(() => {
+		if (videoRef?.current) {
+			videoRef.current.muted = isMuted;
+		}
+	}, [isMuted]);
+
 	return (
 		<div className='flex flex-col border-b-2 border-gray-200 pb-6'>
 			<div>
 				<div className='flex gap-3 p-2 cursor-pointer font-semibold rounded'>
 					<div className='md:w-16 md:h-16 w-10 h-10'>
-						<Link href='/'>
+						<Link href={`/profile/${post.postedBy._id}`}>
 							<React.Fragment>
 								<Image
 									width={62}
@@ -54,7 +60,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					</div>
 
 					<div>
-						<Link href='/'>
+						<Link href={`/profile/${post.postedBy._id}`}>
 							<div className='flex items-center gap-2'>
 								<p className='flex gap-2 items-center md:text-md font-bold text-primary'>
 									{post.postedBy.userName}
@@ -77,7 +83,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					onMouseEnter={() => setIsHover(true)}
 					onMouseLeave={() => setIsHover(false)}
 				>
-					<Link href='/'>
+					<Link href={`/detail/${post._id}`}>
 						<video
 							className='lg:w-[600px] lg:h-[530px] w-[200px] h-[300px] rounded-2xl cursor-pointer bg-gray-100'
 							src={post.video.asset.url}
@@ -87,7 +93,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					</Link>
 
 					{isHover && (
-						<div className='absolute bottom-6 cursor-pointer left-8 md:left-11 lg:left-0 flex gap-10 justify-between w-[100px] m:w-[50px] p-3'>
+						<div className='absolute bottom-0 cursor-pointer left-8 md:left-11 lg:left-0 flex gap-10 justify-between w-[100px] m:w-[50px] p-3'>
 							{isPlaying ? (
 								<button onClick={handleVideoControlsClick}>
 									<BsFillPauseFill className='text-black text-2xl lg:text-4xl' />
