@@ -30,14 +30,13 @@ const SuggestedAccounts = ({ fetchAllUsers, allUsers }: any) => {
 				{users?.slice(0, 6).map((user: IUser) => (
 					<Link href={`/profile/${user._id}`} key={user._id}>
 						<div className='flex gap-3 hover:bg-primary p-2 cursor-pointer font-semibold rounded'>
-							<div className='w-8 h-8'>
+							<div className='w-8 h-8 relative'>
 								<Image
 									src={user.image}
-									width={34}
-									height={34}
 									className='rounded-full'
 									alt='user profile'
-									layout='responsive'
+									layout='fill'
+									objectFit='fill'
 								/>
 							</div>
 
